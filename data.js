@@ -1,4 +1,4 @@
-{
+window.TIMELINE_DATA = {
     "settings": {
         "start": "1990-01-01",
         "end": "2026-01-01",
@@ -156,4 +156,4 @@
             "desc": "NYC Marathon 2019"
         }
     ]
-}
+};

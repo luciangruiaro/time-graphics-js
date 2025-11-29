@@ -1,128 +1,80 @@
-:root {
-    --bg-color: #f8fafc;
-    --text-color: #1e293b;
-    --border-color: #e2e8f0;
-    --font-family: 'Inter', sans-serif;
-    --track-bg: #f1f5f9;
-}
-
-* {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
-    padding: 20px;
-    font-family: var(--font-family);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    padding: 0;
+    background-color: #2c2d2f;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #eeeeee;
 }
 
 #timeline-container {
     width: 100%;
     max-width: 1200px;
-    height: 800px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    overflow: hidden;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
     position: relative;
-    border: 1px solid var(--border-color);
 }
 
-svg {
-    display: block;
+#timeline-svg {
     width: 100%;
-    height: 100%;
+    height: 600px;
+    background-color: #2c2d2f;
+    border: 1px solid #0de7e7;
+    display: block;
+    user-select: none;
 }
 
-/* Axis and Grid */
-.axis-line {
-    stroke: var(--border-color);
-    stroke-width: 2;
-}
-
-.grid-line {
-    stroke: var(--border-color);
-    stroke-width: 1;
-    stroke-dasharray: 4 4;
-    opacity: 0.5;
-}
-
-.tick-label {
-    font-size: 11px;
-    fill: #64748b;
-    text-anchor: middle;
-}
-
-/* Tracks */
-.track-bg {
-    fill: var(--track-bg);
-    opacity: 0.3;
-}
-
-.track-label {
+#timeline-tooltip {
+    position: fixed;
+    display: none;
+    background: rgba(44, 45, 47, 0.95);
+    border: 1px solid #0de7e7;
+    padding: 8px 12px;
     font-size: 12px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(13, 231, 231, 0.3);
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 1000;
+    color: #eeeeee;
+    line-height: 1.4;
+}
+
+.track-label-text {
+    font-size: 14px;
     font-weight: 600;
-    fill: #475569;
+    fill: #0de7e7;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    dominant-baseline: hanging;
 }
 
-/* Items */
-.item-group {
-    cursor: pointer;
-    transition: opacity 0.2s;
-}
-
-.item-group:hover {
-    opacity: 0.9;
-}
-
-.item-band {
-    opacity: 0.5;
-}
-
-.item-range rect {
-    stroke: white;
-    stroke-width: 1px;
-    rx: 4px;
-}
-
-.item-milestone circle {
-    stroke: white;
-    stroke-width: 2px;
-}
-
-.item-label {
-    font-size: 11px;
-    font-weight: 500;
-    fill: white;
-    pointer-events: none;
-    /* Let clicks pass through to the rect */
-}
-
-.item-label.outside {
-    fill: var(--text-color);
-}
-
-/* Tooltip */
-.tooltip {
+/* Export Button */
+#timeline-export-btn {
     position: absolute;
-    background: #1e293b;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
+    top: 30px;
+    right: 30px;
+    padding: 8px 16px;
     font-size: 12px;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s;
+    font-weight: 500;
+    background: #0de7e7;
+    color: #2c2d2f;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
     z-index: 100;
-    max-width: 250px;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    box-shadow: 0 2px 4px rgba(13, 231, 231, 0.3);
+    transition: background 0.2s, transform 0.1s;
+    font-family: 'Roboto', sans-serif;
+}
+
+#timeline-export-btn:hover {
+    background: #c73a52;
+    color: #eeeeee;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(199, 58, 82, 0.4);
+}
+
+#timeline-export-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(13, 231, 231, 0.3);
 }
